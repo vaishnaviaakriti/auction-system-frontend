@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { io } from "socket.io-client"
+
 export default function Chat() {
-
-
-  const [room, setRoom] = useState()
+ const [room, setRoom] = useState()
   const [isJoined, setIsJoined] = useState(false)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState()
   // const socket = io("https://hotesss.onrender.com", { transports: ["websocket"] })
-     const socket = io ("https://localhost:3000", {transports: ["websocket"]})
+     const socket = io ("https://auction-3zsn.onrender.com", {transports: ["websocket"]})
   useEffect(() => {
     socket.on("joined", () => {
       setIsJoined(true)
@@ -26,7 +25,7 @@ export default function Chat() {
     socket.emit("join", room)
   }
   return (
-    <>
+    <div>
       {
         !isJoined ?
           <div>
@@ -50,7 +49,7 @@ export default function Chat() {
           <input onChange={(e) => setMessage(e.target.value)} type='text' placeholder='Enter Message' />
           <button onClick={Send} className='m-6 appearance-none block w-10 bg-gray-200 rounded-lg'>Send</button>
         </div>
-    }
-    </>
-  )
+}
+</div>
+)
 }

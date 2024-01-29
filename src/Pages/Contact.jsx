@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Contact = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     phoneNumber: '',
@@ -32,6 +33,7 @@ const Contact = () => {
         
         // Handle successful form submission
         console.log('Form submitted successfully!');
+        navigate('/Dashboard');
       } else {
         // Handle form submission failure
         console.error('Form submission failed.');

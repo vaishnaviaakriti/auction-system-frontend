@@ -3,6 +3,8 @@ import Navbar from "./Components/Navbar"
 import Home from "./Pages/Home"
 import Contact from "./Pages/Contact"
 import Chat from "./Pages/Chat"
+import About from "./Pages/About"
+import Dashboard from "./Pages/Dashboard"
 import { Route, Routes } from "react-router-dom"
 import { analytics } from "../src/Helper"
 import { logEvent } from "firebase/analytics"
@@ -21,8 +23,8 @@ if (analytics){
         <Route path="/" element={<Home />} />
 <Route path="/contact"element={<Contact/>}/>
 <Route path="/chat"element={<Chat/>}/>
-
-
+<Route path="/About"element={<About/>}/>
+<Route path="/Dashboard"element={<Dashboard/>}/>
       </Routes>
 
       <Footer />

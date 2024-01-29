@@ -1,6 +1,14 @@
 import React from 'react'
 import Auction from "../assets/Auction.jpg"
-export default function Navbar() {
+import { useContext } from 'react'
+import { MyContext } from '../Helper/AppContext'
+
+// import { Link } from 'react-router-dom'
+export default function Navbar(){
+
+
+  const {user}=useContext(MyContext)
+  console.log(user)
   return (
     
 
@@ -36,6 +44,9 @@ export default function Navbar() {
           <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
         </li>
       </ul>
+      {/* <Link to={"/adminregister"}>
+      <p className='text-white mr-4'>Adminregister</p>
+      </Link> */}
     </div>
   </div>
 </nav>
