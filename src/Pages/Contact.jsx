@@ -33,7 +33,8 @@ const Contact = () => {
         
         // Handle successful form submission
         console.log('Form submitted successfully!');
-        navigate('/Dashboard');
+        // 
+        navigate(`/CongratulationPage?name=${formData.name}`);
       } else {
         // Handle form submission failure
         console.error('Form submission failed.');

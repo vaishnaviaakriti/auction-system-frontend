@@ -5,6 +5,10 @@ import Contact from "./Pages/Contact"
 import Chat from "./Pages/Chat"
 import About from "./Pages/About"
 import Dashboard from "./Pages/Dashboard"
+import Register from "./Pages/Register"
+import Login from "./Pages/Login"
+import Dashboardbid from "./Pages/Dashnoardbid"
+import CongratulationPage from "./Pages/Congratulationpage"
 import { Route, Routes } from "react-router-dom"
 import { analytics } from "../src/Helper"
 import { logEvent } from "firebase/analytics"
@@ -25,6 +29,10 @@ if (analytics){
 <Route path="/chat"element={<Chat/>}/>
 <Route path="/About"element={<About/>}/>
 <Route path="/Dashboard"element={<Dashboard/>}/>
+<Route path="/Register"element={<Register/>}/>
+<Route path="/Login"element={<Login/>}/>
+<Route path="/Dashboardbid"element={<Dashboardbid/>}/>
+<Route path="/CongratulationPage"element={<CongratulationPage/>}/>
       </Routes>
 
       <Footer />
