@@ -1,7 +1,9 @@
 // CongratulationPage.js
 import React from 'react';
-
-const CongratulationPage = ({ name }) => {
+import { useSearchParams } from 'react-router-dom';
+const CongratulationPage = (props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+ const name =  searchParams.get("name")
   return (
     <div>
       <h2>Congratulations, {name}!</h2>

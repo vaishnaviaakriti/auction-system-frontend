@@ -1,4 +1,4 @@
-import Footer from "./Components/Footer"
+// import Footer from "./Components/Footer"
 import Navbar from "./Components/Navbar"
 import Home from "./Pages/Home"
 import Contact from "./Pages/Contact"
@@ -9,6 +9,7 @@ import Register from "./Pages/Register"
 import Login from "./Pages/Login"
 import Dashboardbid from "./Pages/Dashnoardbid"
 import CongratulationPage from "./Pages/Congratulationpage"
+import Dynamic from "./Pages/Dynamic"
 import { Route, Routes } from "react-router-dom"
 import { analytics } from "../src/Helper"
 import { logEvent } from "firebase/analytics"
@@ -33,9 +34,10 @@ if (analytics){
 <Route path="/Login"element={<Login/>}/>
 <Route path="/Dashboardbid"element={<Dashboardbid/>}/>
 <Route path="/CongratulationPage"element={<CongratulationPage/>}/>
+<Route path="/Dynamic/:id"element={<Dynamic/>}/>
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
 
 
