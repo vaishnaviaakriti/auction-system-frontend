@@ -28,17 +28,30 @@ const DashboardBid = () => {
   };
 
   // Function to handle bid submission
-  const handleBidSubmit = (event) => {
-    event.preventDefault();
-    const bidAmount = event.target.elements.bidAmount.value;
-    if (bidAmount > highestBid) {
-      setHighestBid(parseInt(bidAmount));
+  // Function to handle bid submission
+// Function to handle bid submission
+// Function to handle bid submission
+const handleBidSubmit = (event) => {
+  event.preventDefault();
+  const bidAmount = parseInt(event.target.elements.bidAmount.value);
+  console.log("Bid Amount:", bidAmount);
+  console.log("Current Highest Bid:", highestBid);
+  if (!isNaN(bidAmount)) {
+    if (bidAmount > highestBid || highestBid === 0) {
+      setHighestBid(bidAmount);
       setHighestBidder('User'); // Replace 'User' with actual user name or identifier
     } else {
       // Handle if bid is not higher than current highest bid
       alert('Your bid must be higher than the current highest bid.');
     }
-  };
+  } else {
+    // Handle if bid amount is not a valid number
+    alert('Please enter a valid bid amount.');
+  }
+};
+
+
+
 
   return (
     <div className="flex flex-col h-screen">
@@ -85,22 +98,20 @@ const DashboardBid = () => {
               Submit Bid
             </button>
           </form>
+          
+          {/* Redirect to Congratulation Page if the highest bid */}
+          {highestBidder && (
+            <div className="mt-4">
+              <p>Congratulations, {highestBidder}! You have the highest bid!</p>
+              <Link to="/Contact" className="text-blue-500 hover:underline">
+                Contact
+              </Link>
+            </div>
+          )}
         </div>
-        
-        {/* Redirect to Congratulation Page if the highest bid */}
-        {highestBidder && (
-          <div className="mt-4">
-            <p>Congratulations, {highestBidder}! You have the highest bid!</p>
-            <Link to="/Congratulation" className="text-blue-500 hover:underline">
-              Go to congratulation page
-            </Link>
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
 export default DashboardBid;
-
-
