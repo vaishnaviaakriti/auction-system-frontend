@@ -10,6 +10,7 @@ import Login from "./Pages/Login"
 import Dashboardbid from "./Pages/Dashnoardbid"
 import CongratulationPage from "./Pages/Congratulationpage"
 import Dynamic from "./Pages/Dynamic"
+import SellItem from "./Pages/SellItem"
 import { Route, Routes } from "react-router-dom"
 import { analytics } from "../src/Helper"
 import { logEvent } from "firebase/analytics"
@@ -32,6 +33,8 @@ if (analytics){
 <Route path="/Dashboard"element={<Dashboard/>}/>
 <Route path="/Register"element={<Register/>}/>
 <Route path="/Login"element={<Login/>}/>
+<Route path="/Home"element={<Home/>}/>
+<Route path="/SellItem"element={<SellItem/>}/>
 <Route path="/Dashboardbid"element={<Dashboardbid/>}/>
 <Route path="/CongratulationPage"element={<CongratulationPage/>}/>
 <Route path="/Dynamic/:id"element={<Dynamic/>}/>
