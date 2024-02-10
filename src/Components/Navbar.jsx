@@ -1,42 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import a from "../assets/laptop-mallet-table.jpg"
 
 export default function Navbar() {
   return (
     
             
         
-        <nav className='w-full h-auto bg-blue-500 flex flex-row justify-between  p-8 rounded-full'>
+        <nav className='w-full h-20 bg-black flex items-center justify-between  p-4'>
         
-        <div className='flex flex-row self-center items-center'>
-        <img src="../src/assets/Auction-Bidding.jpeg" alt="logo" className='h-5 w-5'/>
-        
-         <p className='text-white text-center ms-4 md:font-bold text-2xl'>ONLINE AUCTION SYSTEM</p>   
+        <div className='flex items-center'>
+          <div className="h-10 w-10 rouned full overflow-hidden">
+        <img src={a} alt="logo" className='h-full w-full object-cover'/>
         </div>
-        <div className='h-14 bg-gradient-to-r from-sky-500 to-indigo-500'></div>
-        <div className='flex flex-row self-center'>
-        
-        <Link to={"/Home"}>
-          <p className='text-white mr-4'>Home</p>
-
-          
-        </Link>
-        
-        <Link to={"/About"}>
-          <p className='text-white mr-4'>About</p>
-        </Link>
-          <Link to={"/Contact"}>
-          <p className='text-white mr-4'>Contact</p>
-          
-          </Link>  
-          <Link to={"/SellItem"}>
-          <p className='text-white'>SellItem</p>
-          
-          
-          
-          </Link>
+         <p className='text-white text-center ml-4 font-bold text-2xl italic'>ONLINE AUCTION SYSTEM</p>   
         </div>
-
+        <div className="flex items-center space-x-4">
+        <Link to="/Home" className="text-white">
+          Home
+        </Link>
+        <Link to="/About" className="text-white">
+          About
+        </Link>
+        <Link to="/Contact" className="text-white">
+          Contact
+        </Link>
+        <Link to="/Sellitem" className="text-white">
+          Sell 
+        </Link>
+      </div>
     </nav>
-  )
+  );
 }
