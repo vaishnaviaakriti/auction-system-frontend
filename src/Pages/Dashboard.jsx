@@ -1,60 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import auction from "../assets/auction.png";
 
 const Dashboard = () => {
-  const data = [
-    { category: 'clothes', bidPrice: 100, currentPrice: 120, bidStartTime: '10:00 AM', bidEndTime: '11:00 AM', image: 'URL_to_clothes_image' },
-    { category: 'shoes', bidPrice: 150, currentPrice: 180, bidStartTime: '11:30 AM', bidEndTime: '12:30 PM', image: 'URL_to_book_image' },
-    { category: 'Book', bidPrice: 80, currentPrice: 90, bidStartTime: '1:00 PM', bidEndTime: '2:00 PM', image: 'URL_to_book_image' },
-    { category: 'Watch', bidPrice: 120, currentPrice: 140, bidStartTime: '3:00 PM', bidEndTime: '4:00 PM', image: 'URL_to_watch_image' },
-    // Add more data as needed
-  ];
+  const [items, setItems] = useState([]);
 
-  const handleBidNow = (category) => {
-    // Add logic to handle bid action for the specific category
-    console.log(`Placing bid for ${category}`);
-    // Example: Redirect to the Register page
-    // This will work with react-router-dom's Link
-    window.location.href = "/Register";
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/getItem");
+        if (!response.ok) {
+          throw new Error('Failed to fetch items');
+        }
+        const data = await response.json();
+        setItems(data);
+      } catch (error) {
+        console.error('Error fetching items:', error);
+      }
+    };
+
+    fetchItems();
+  }, []);
+
+  const handleBidNow = (itemId) => {
+    // Implement bid now functionality here
+    console.log('Bid Now for item:', itemId);
+  };
+
+  const isBidAllowed = (startDate, endDate) => {
+    const currentTimeStamp = Date.now();
+    return currentTimeStamp >= startDate && currentTimeStamp <= endDate;
   };
 
   return (
-    <div className="container mx-auto mt-8 bg-red-300">
-      <h1 className="text-3xl font-bold mb-4">Bid Dashboard</h1>
-      <table className="min-w-full bg-white border border-gray-300">
-        <thead>
+    <div className="container mx-auto">
+      <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
           <tr>
-            <th className="py-2 px-4 border-b bg-gray-200">Category</th>
-            <th className="py-2 px-4 border-b bg-gray-200">Bid Price</th>
-            <th className="py-2 px-4 border-b bg-gray-200">Current Price</th>
-            <th className="py-2 px-4 border-b bg-gray-200">Bid Start Time</th>
-            <th className="py-2 px-4 border-b bg-gray-200">Bid End Time</th>
-            <th className="py-2 px-4 border-b bg-gray-200">Image</th>
-            <th className="py-2 px-4 border-b bg-gray-200">Actions</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product ID</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Seller</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Current Price</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Date</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End Date</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th> {/* New column for Bid Now button */}
           </tr>
         </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
-              <td className="py-2 px-4 border-b bg-red-300 ">{item.category}</td>
-              <td className="py-2 px-4 border-b bg-red-300">{item.bidPrice}</td>
-              <td className="py-2 px-4 border-b bg-red-300">{item.currentPrice}</td>
-              <td className="py-2 px-4 border-b bg-red-300 ">{item.bidStartTime}</td>
-              <td className="py-2 px-4 border-b bg-red-300">{item.bidEndTime}</td>
-              <td className="py-2 px-4 border-b bg-red-300">
-                <img src={auction} className='max-h-[20vh] rounded-m' alt={`Auction for ${item.clothes}`} />
-              </td>
-              <td className="py-2 px-4 border-b bg-red-900">
-                {/* Use the to prop with a callback function */}
-                <Link to={() => "/Register"}>
-                  <button
-                    onClick={() => handleBidNow(item.category)}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  >
+        <tbody className="bg-white divide-y divide-gray-200">
+          {items.map(item => (
+            <tr key={item._id}>
+              <td className="px-6 py-4 whitespace-nowrap">{item.productid}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{item.sellerid}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{item.category}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{item.description}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{item.currentprice}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{new Date(item.startdate).toLocaleDateString()}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{new Date(item.enddate).toLocaleDateString()}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{item.status}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {isBidAllowed(item.startdate, item.enddate) ? (
+                  <Link to="/Dashboardbid" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Bid Now
+                  </Link>
+                ) : (
+                  <button disabled className="bg-gray-300 text-gray-600 font-bold py-2 px-4 rounded cursor-not-allowed">
                     Bid Now
                   </button>
-                </Link>
+                )}
               </td>
             </tr>
           ))}

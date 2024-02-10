@@ -1,11 +1,11 @@
-// DashboardBid.js
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import clothes from '../assets/clothes.jpeg';
 
 const DashboardBid = () => {
   const [secondsLeft, setSecondsLeft] = useState(600); // Initial value for 10 minutes
+  const [highestBid, setHighestBid] = useState(0);
+  const [highestBidder, setHighestBidder] = useState('');
 
   // Function to update the timer every second
   const updateTimer = () => {
@@ -25,6 +25,19 @@ const DashboardBid = () => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
+  // Function to handle bid submission
+  const handleBidSubmit = (event) => {
+    event.preventDefault();
+    const bidAmount = event.target.elements.bidAmount.value;
+    if (bidAmount > highestBid) {
+      setHighestBid(parseInt(bidAmount));
+      setHighestBidder('User'); // Replace 'User' with actual user name or identifier
+    } else {
+      // Handle if bid is not higher than current highest bid
+      alert('Your bid must be higher than the current highest bid.');
+    }
   };
 
   return (
@@ -55,7 +68,7 @@ const DashboardBid = () => {
           <p className="text-gray-700 mb-2">Time Left: {formatTime(secondsLeft)}</p>
 
           {/* Bid Form */}
-          <form className="flex flex-col max-w-sm">
+          <form className="flex flex-col max-w-sm" onSubmit={handleBidSubmit}>
             <label className="text-sm text-gray-600 mb-1" htmlFor="bidAmount">
               Your Bid:
             </label>
@@ -68,19 +81,26 @@ const DashboardBid = () => {
             />
 
             {/* Submit Bid Button */}
-            <Link to="/Contact">
-              <button
-                type="submit"
-                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-              >
-                Submit Bid
-              </button>
-            </Link>
+            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+              Submit Bid
+            </button>
           </form>
         </div>
+        
+        {/* Redirect to Congratulation Page if the highest bid */}
+        {highestBidder && (
+          <div className="mt-4">
+            <p>Congratulations, {highestBidder}! You have the highest bid!</p>
+            <Link to="/Congratulation" className="text-blue-500 hover:underline">
+              Go to congratulation page
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default DashboardBid;
+
+
