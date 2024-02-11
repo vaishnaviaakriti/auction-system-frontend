@@ -1,4 +1,4 @@
-// import Footer from "./Components/Footer"
+import Footer from "./Components/Footer"
 import Navbar from "./Components/Navbar"
 import Home from "./Pages/Home"
 import Contact from "./Pages/Contact"
@@ -8,7 +8,7 @@ import Dashboard from "./Pages/Dashboard"
 import Register from "./Pages/Register"
 import Login from "./Pages/Login"
 import Dashboardbid from "./Pages/Dashnoardbid"
-import CongratulationPage from "./Pages/Congratulationpage"
+import CongratulationPage from "./Pages/CongratulationPage"
 import Dynamic from "./Pages/Dynamic"
 import SellItem from "./Pages/SellItem"
 import ThankYou from "./Pages/ThankYou"
@@ -44,7 +44,7 @@ if (analytics){
 <Route path="/Dynamic/:id"element={<Dynamic/>}/>
       </Routes>
 
-      {/* <Footer /> */}
+      <Footer/> 
     </div>
 
 
