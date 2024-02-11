@@ -11,6 +11,8 @@ import Dashboardbid from "./Pages/Dashnoardbid"
 import CongratulationPage from "./Pages/Congratulationpage"
 import Dynamic from "./Pages/Dynamic"
 import SellItem from "./Pages/SellItem"
+import ThankYou from "./Pages/ThankYou"
+import PaymentPage from "./Pages/PaymentPage"
 import { Route, Routes } from "react-router-dom"
 import { analytics } from "../src/Helper"
 import { logEvent } from "firebase/analytics"
@@ -37,6 +39,8 @@ if (analytics){
 <Route path="/SellItem"element={<SellItem/>}/>
 <Route path="/Dashboardbid"element={<Dashboardbid/>}/>
 <Route path="/CongratulationPage"element={<CongratulationPage/>}/>
+<Route path="/ThankYou"element={<ThankYou/>}/>
+<Route path="/PaymentPage"element={<PaymentPage/>}/>
 <Route path="/Dynamic/:id"element={<Dynamic/>}/>
       </Routes>
 

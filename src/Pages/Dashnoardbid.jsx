@@ -4,8 +4,8 @@ import clothes from '../assets/clothes.jpeg';
 
 const DashboardBid = () => {
   const [secondsLeft, setSecondsLeft] = useState(600); // Initial value for 10 minutes
-  const [highestBid, setHighestBid] = useState(0);
-  const [highestBidder, setHighestBidder] = useState('');
+  const [bidAmount, setBidAmount] = useState(0);
+  const [highestBid, setHighestBid] = useState(500); // Initial highest bid
 
   // Function to update the timer every second
   const updateTimer = () => {
@@ -24,34 +24,20 @@ const DashboardBid = () => {
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
+
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
   // Function to handle bid submission
-  // Function to handle bid submission
-// Function to handle bid submission
-// Function to handle bid submission
-const handleBidSubmit = (event) => {
-  event.preventDefault();
-  const bidAmount = parseInt(event.target.elements.bidAmount.value);
-  console.log("Bid Amount:", bidAmount);
-  console.log("Current Highest Bid:", highestBid);
-  if (!isNaN(bidAmount)) {
-    if (bidAmount > highestBid || highestBid === 0) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (bidAmount > highestBid && bidAmount <= 1000) {
+      // Update the highest bid
       setHighestBid(bidAmount);
-      setHighestBidder('User'); // Replace 'User' with actual user name or identifier
-    } else {
-      // Handle if bid is not higher than current highest bid
-      alert('Your bid must be higher than the current highest bid.');
+      // Redirect to Contact page upon successful bid
+      window.location.href = '/Contact';
     }
-  } else {
-    // Handle if bid amount is not a valid number
-    alert('Please enter a valid bid amount.');
-  }
-};
-
-
-
+  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -81,7 +67,7 @@ const handleBidSubmit = (event) => {
           <p className="text-gray-700 mb-2">Time Left: {formatTime(secondsLeft)}</p>
 
           {/* Bid Form */}
-          <form className="flex flex-col max-w-sm" onSubmit={handleBidSubmit}>
+          <form className="flex flex-col max-w-sm" onSubmit={handleSubmit}>
             <label className="text-sm text-gray-600 mb-1" htmlFor="bidAmount">
               Your Bid:
             </label>
@@ -91,23 +77,25 @@ const handleBidSubmit = (event) => {
               name="bidAmount"
               className="border rounded py-2 px-3 mb-2"
               placeholder="Enter your bid amount"
+              value={bidAmount}
+              onChange={(e) => {
+                const value = parseInt(e.target.value);
+                if (!isNaN(value)) {
+                  setBidAmount(value);
+                } else {
+                  setBidAmount(0); // or any default value you prefer
+                }
+              }}
             />
 
             {/* Submit Bid Button */}
-            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+            <button
+              type="submit"
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            >
               Submit Bid
             </button>
           </form>
-          
-          {/* Redirect to Congratulation Page if the highest bid */}
-          {highestBidder && (
-            <div className="mt-4">
-              <p>Congratulations, {highestBidder}! You have the highest bid!</p>
-              <Link to="/Contact" className="text-blue-500 hover:underline">
-                Contact
-              </Link>
-            </div>
-          )}
         </div>
       </div>
     </div>
