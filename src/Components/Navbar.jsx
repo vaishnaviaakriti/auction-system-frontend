@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import a from "../assets/laptop-mallet-table.jpg"
+import a from "../assets/zz.jpg"
 
 export default function Navbar() {
   return (
@@ -11,21 +11,21 @@ export default function Navbar() {
         
         <div className='flex items-center'>
           <div className="h-10 w-10 rouned full overflow-hidden">
-        <img src={a} alt="logo" className='h-full w-full object-cover'/>
+        <img src={a} alt="logo" className='h-full w-full object-cover rounded-full'/>
         </div>
-         <p className='text-white text-center ml-4 font-bold text-2xl italic'>ONLINE AUCTION SYSTEM</p>   
+         <p className='text-white text-center ml-4 font-bold text-3xl italic'>ONLINE AUCTION SYSTEM</p>   
         </div>
         <div className="flex items-center space-x-4">
-        <Link to="/Home" className="text-white">
+        <Link to="/Home" className="text-white hover:text-red-900">
           Home
         </Link>
-        <Link to="/About" className="text-white">
+        <Link to="/About" className="text-white hover:text-red-900">
           About
         </Link>
-        <Link to="/Contact" className="text-white">
+        <Link to="/Contact" className="text-white hover:text-red-900">
           Contact
         </Link>
-        <Link to="/Sellitem" className="text-white">
+        <Link to="/Sellitem" className="text-white hover:text-red-900">
           Sell 
         </Link>
       </div>

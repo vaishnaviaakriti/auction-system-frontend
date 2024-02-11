@@ -56,6 +56,8 @@ const Contact = () => {
   };
 
   return (
+    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+    <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
     <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
       <div className="border p-4 mb-4 rounded">
         <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -119,12 +121,13 @@ const Contact = () => {
       <div className="mb-4">
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block"
         >
           Submit
         </button>
       </div>
     </form>
+    </div>
   );
 };
 

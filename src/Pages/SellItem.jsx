@@ -38,7 +38,7 @@ const SellItem = () => {
 
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
-            <h2 className="text-2xl font-semibold mb-4">Sell Item</h2>
+            <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">Sell your products with us!</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block mb-1">Product ID:</label>
@@ -131,7 +131,7 @@ const SellItem = () => {
                         <option value="inactive">Inactive</option>
                     </select>
                 </div>
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
+                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mx-auto block">Submit</button>
             </form>
         </div>
     );
