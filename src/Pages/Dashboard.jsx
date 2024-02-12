@@ -32,48 +32,35 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product ID</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Seller</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Current Price</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Date</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End Date</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th> {/* New column for Bid Now button */}
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+    <div className="bg-gradient-to-br from-purple-400 to-indigo-500 min-h-screen">
+      <div className="container mx-auto py-8 text-orange-950">
+        <h1 className="text-3xl font-bold text-orange-950 mb-4">Dashboard</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {items.map(item => (
-            <tr key={item._id}>
-              <td className="px-6 py-4 whitespace-nowrap">{item.productid}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{item.sellerid}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{item.category}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{item.description}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{item.currentprice}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{new Date(item.startdate).toLocaleDateString()}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{new Date(item.enddate).toLocaleDateString()}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{item.status}</td>
-              <td className="px-6 py-4 whitespace-nowrap">
+            <div key={item._id} className="bg-gray-100 rounded-lg p-4">
+              <h2 className="text-xl font-semibold mb-2">{item.productid}</h2>
+              <p className="text-lime-800 mb-2">Seller: {item.sellerid}</p>
+              <p className="text-lime-800 mb-2">Category: {item.category}</p>
+              <p className="text-lime-800 mb-2">Description: {item.description}</p>
+              <p className="text-lime-800 mb-2">Current Price: ${item.currentprice.toFixed(2)}</p>
+              <p className="text-lime-800 mb-2">Start Date: {new Date(item.startdate).toLocaleDateString()}</p>
+              <p className="text-lime-800 mb-2">End Date: {new Date(item.enddate).toLocaleDateString()}</p>
+              <p className="text-lime-800 mb-2">Status: {item.status}</p>
+              <div className="mt-4">
                 {isBidAllowed(item.startdate, item.enddate) ? (
                   <Link to="/Register" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Bid Now
                   </Link>
                 ) : (
-                  <button disabled className="bg-gray-300 text-gray-600 font-bold py-2 px-4 rounded cursor-not-allowed">
+                  <button disabled className="bg-gray-400 text-gray-600 font-bold py-2 px-4 rounded cursor-not-allowed">
                     Bid Now
                   </button>
                 )}
-              </td>
-            </tr>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };
