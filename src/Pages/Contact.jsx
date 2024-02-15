@@ -57,77 +57,80 @@ const Contact = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
-    <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
-      <div className="border p-4 mb-4 rounded">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Name:
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </label>
+    
+    <div className="bg-gray-200 min-h-screen flex items-center justify-center">
+      <div className="max-w-md mx-auto p-6 bg-emerald-950 rounded-md shadow-md">
+        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
+          <div className="border p-4 mb-4 rounded">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Name:
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div className="border p-4 mb-4 rounded">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Phone Number:
+              <input
+                type="tel"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              />
+            </label>
+          </div>
+          <div className="border p-4 mb-4 rounded">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              />
+            </label>
+          </div>
+          <div className="border p-4 mb-4 rounded">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Interest:
+              <input
+                type="text"
+                name="intrest"
+                value={formData.intrest}
+                onChange={handleChange}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              />
+            </label>
+          </div>
+          <div className="border p-4 mb-4 rounded">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Message:
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              />
+            </label>
+          </div>
+          <div className="mb-4">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
-      <div className="border p-4 mb-4 rounded">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Phone Number:
-          <input
-            type="tel"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          />
-        </label>
-      </div>
-      <div className="border p-4 mb-4 rounded">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          />
-        </label>
-      </div>
-      <div className="border p-4 mb-4 rounded">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Interest:
-          <input
-            type="text"
-            name="intrest"
-            value={formData.intrest}
-            onChange={handleChange}
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          />
-        </label>
-      </div>
-      <div className="border p-4 mb-4 rounded">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Message:
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          />
-        </label>
-      </div>
-      <div className="mb-4">
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
     </div>
   );
 };

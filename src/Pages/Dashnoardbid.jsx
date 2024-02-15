@@ -29,13 +29,28 @@ const DashboardBid = () => {
   };
 
   // Function to handle bid submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (bidAmount > highestBid && bidAmount <= 1000) {
-      // Update the highest bid
-      setHighestBid(bidAmount);
-      // Redirect to Contact page upon successful bid
-      window.location.href = '/Contact';
+      try {
+        // Make a POST request to submit the bid
+        const response = await fetch('http://localhost:3000/submitBid', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            bidAmount,
+            bidDescription: 'Auction Bid', // You can customize the bid description if needed
+          }),
+        });
+        const data = await response.json();
+        console.log(data); // Log the response from the backend
+        // Redirect to Contact page upon successful bid
+        window.location.href = '/Contact';
+      } catch (error) {
+        console.error('Error submitting bid:', error);
+      }
     }
   };
 
