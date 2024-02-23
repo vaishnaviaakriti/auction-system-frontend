@@ -7,6 +7,22 @@ const DashboardBid = () => {
   const [bidAmount, setBidAmount] = useState(0);
   const [highestBid, setHighestBid] = useState(500); // Initial highest bid
 
+  useEffect(() => {
+    // Function to fetch the highest bid from the backend
+    const fetchHighestBid = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/getHighestBid');
+        const data = await response.json();
+        setHighestBid(data.highestBid.bidAmount); // Set the highest bid state
+      } catch (error) {
+        console.error('Error fetching highest bid:', error);
+      }
+    };
+
+    // Call the fetchHighestBid function when the component mounts
+    fetchHighestBid();
+  }, []); // Empty dependency array means this effect runs once on mount
+
   // Function to update the timer every second
   const updateTimer = () => {
     setSecondsLeft((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
