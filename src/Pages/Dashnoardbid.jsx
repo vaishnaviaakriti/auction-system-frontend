@@ -6,12 +6,14 @@ const DashboardBid = () => {
   const [secondsLeft, setSecondsLeft] = useState(600); // Initial value for 10 minutes
   const [bidAmount, setBidAmount] = useState(0);
   const [highestBid, setHighestBid] = useState(500); // Initial highest bid
+  const [auctionEnded, setAuctionEnded] = useState(false); // State to track if auction has ended
+  const [winner, setWinner] = useState(null); // State to store the winner's name
 
   useEffect(() => {
     // Function to fetch the highest bid from the backend
     const fetchHighestBid = async () => {
       try {
-        const response = await fetch('http://localhost:3000/getHighestBid');
+        const response = await fetch('http://localhost:3000/getHighestBidAndWinner');
         const data = await response.json();
         setHighestBid(data.highestBid.bidAmount); // Set the highest bid state
       } catch (error) {
@@ -25,7 +27,15 @@ const DashboardBid = () => {
 
   // Function to update the timer every second
   const updateTimer = () => {
-    setSecondsLeft((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
+    setSecondsLeft((prevSeconds) => {
+      if (prevSeconds > 0) {
+        return prevSeconds - 1;
+      } else {
+        // If timer reaches 0, set auctionEnded to true
+        setAuctionEnded(true);
+        return 0;
+      }
+    });
   };
 
   useEffect(() => {
@@ -70,6 +80,24 @@ const DashboardBid = () => {
     }
   };
 
+  // If auction has ended, redirect to Contact page for highest bidder
+  useEffect(() => {
+    if (auctionEnded) {
+      // Fetch winner's name
+      const fetchWinner = async () => {
+        try {
+          const response = await fetch('http://localhost:3000/getHighestBidAndWinner');
+          const data = await response.json();
+          setWinner(data.winner);
+        } catch (error) {
+          console.error('Error fetching winner:', error);
+        }
+      };
+
+      fetchWinner();
+    }
+  }, [auctionEnded]);
+
   return (
     <div className="flex flex-col h-screen">
       {/* Main Header */}
@@ -92,41 +120,48 @@ const DashboardBid = () => {
           <p className="text-gray-700 mb-2">
             Description: “A gentleman’s choice of timepiece says as much about him as does his Saville Row suit.
           </p>
-          <p className="text-gray-700 mb-2">Starting Bid: 500</p>
+          <p className="text-gray-700 mb-2">Starting Bid: {highestBid}</p>
           <p className="text-gray-700 mb-2">Ending Bid: 1000</p>
           {/* Timer */}
           <p className="text-gray-700 mb-2">Time Left: {formatTime(secondsLeft)}</p>
 
           {/* Bid Form */}
-          <form className="flex flex-col max-w-sm" onSubmit={handleSubmit}>
-            <label className="text-sm text-gray-600 mb-1" htmlFor="bidAmount">
-              Your Bid:
-            </label>
-            <input
-              type="number"
-              id="bidAmount"
-              name="bidAmount"
-              className="border rounded py-2 px-3 mb-2"
-              placeholder="Enter your bid amount"
-              value={bidAmount}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (!isNaN(value)) {
-                  setBidAmount(value);
-                } else {
-                  setBidAmount(0); // or any default value you prefer
-                }
-              }}
-            />
+          {!auctionEnded && (
+            <form className="flex flex-col max-w-sm" onSubmit={handleSubmit}>
+              <label className="text-sm text-gray-600 mb-1" htmlFor="bidAmount">
+                Your Bid:
+              </label>
+              <input
+                type="number"
+                id="bidAmount"
+                name="bidAmount"
+                className="border rounded py-2 px-3 mb-2"
+                placeholder="Enter your bid amount"
+                value={bidAmount}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value);
+                  if (!isNaN(value)) {
+                    setBidAmount(value);
+                  } else {
+                    setBidAmount(0); // or any default value you prefer
+                  }
+                }}
+              />
 
-            {/* Submit Bid Button */}
-            <button
-              type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            >
-              Submit Bid
-            </button>
-          </form>
+              {/* Submit Bid Button */}
+              <button
+                type="submit"
+                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              >
+                Submit Bid
+              </button>
+            </form>
+          )}
+
+          {/* Winner Message */}
+          {auctionEnded && winner && (
+            <p className="text-green-500 mt-4">Auction ended. Winner: {winner}</p>
+          )}
         </div>
       </div>
     </div>
