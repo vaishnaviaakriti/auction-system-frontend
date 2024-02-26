@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import clothes from '../assets/clothes.jpeg';
 
 const DashboardBid = () => {
@@ -72,23 +71,24 @@ const DashboardBid = () => {
         });
         const data = await response.json();
         console.log(data); // Log the response from the backend
-        // Redirect to Contact page upon successful bid
-        window.location.href = '/Contact';
+        // Redirect to TimerPage upon successful bid
+        if (response.ok) {
+          window.location.href = '/TimerPage';
+        }
       } catch (error) {
         console.error('Error submitting bid:', error);
       }
     }
   };
 
-  // If auction has ended, redirect to Contact page for highest bidder
+  // If auction has ended, fetch winner's name
   useEffect(() => {
     if (auctionEnded) {
-      // Fetch winner's name
       const fetchWinner = async () => {
         try {
-          const response = await fetch('http://localhost:3000/getHighestBidAndWinner');
+          const response = await fetch("http://localhost:3000/getHighestBidAndWinner");
           const data = await response.json();
-          setWinner(data.winner);
+          setWinner(data.winner.name); // Set the winner state
         } catch (error) {
           console.error('Error fetching winner:', error);
         }
