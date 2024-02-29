@@ -7,7 +7,6 @@ const TimerPage = () => {
   const [bidEnded, setBidEnded] = useState(false);
 
   useEffect(() => {
-    // Fetch items from backend
     const fetchItems = async () => {
       try {
         const response = await fetch('http://localhost:3000/getItem');
@@ -34,15 +33,14 @@ const TimerPage = () => {
 
       const difference = endDateTime - new Date();
       if (difference <= 0) {
-        // Bid has ended
         setBidEnded(true);
         return 'Bid ended';
       } else {
+        setBidEnded(false);
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
         return `${days}d ${hours}h ${minutes}m ${seconds}s`;
       }
     }
@@ -56,12 +54,20 @@ const TimerPage = () => {
         {timeRemainingList.map((timeRemaining, index) => (
           <div key={index} className="text-center mb-4">Item {index + 1}: {timeRemaining}</div>
         ))}
-        {/* Conditional rendering for Contact link */}
-        {bidEnded && (
-          <div className="text-center">
-            <Link to="/Contact" className="text-blue-500 hover:underline">Contact us</Link>
-          </div>
-        )}
+        {/* Conditional rendering for Contact button */}
+        <div className="text-center">
+          {bidEnded ? (
+            <Link to="/Contact">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Contact us
+              </button>
+            </Link>
+          ) : (
+            <button disabled className="bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-not-allowed">
+              Contact us
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
