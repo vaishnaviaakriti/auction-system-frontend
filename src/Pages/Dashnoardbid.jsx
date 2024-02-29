@@ -99,18 +99,18 @@ const DashboardBid = () => {
   }, [auctionEnded]);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-gray-200">
       {/* Main Header */}
       <header className="bg-blue-500 p-4 text-white">
         <h1 className="text-2xl font-semibold">Auction App</h1>
       </header>
 
       {/* Main Content */}
-      <div className="flex-grow bg-gray-100 p-8">
+      <div className="flex-grow p-8">
         <h2 className="text-3xl font-semibold mb-4">Current Auction</h2>
 
         {/* Auction Heading and Image */}
-        <div className="bg-white p-8 rounded shadow-md">
+        <div className="bg-white p-8 rounded shadow-md bg-teal-100"> {/* Added bg-teal-100 class */}
           <h3 className="text-2xl font-semibold mb-4">Auction Item Name</h3>
 
           {/* Auction Image */}
