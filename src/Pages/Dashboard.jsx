@@ -46,16 +46,16 @@ const Dashboard = () => {
                 ))}
               </div>
               <h2 className="text-xl text-center font-semibold mb-2">{item.productid}</h2>
-              <p className="text-lime-800 text-center mb-2">Seller: {item.sellerid}</p>
-              <p className="text-lime-800 text-center mb-2">Category: {item.category}</p>
-              <p className="text-lime-800 text-center mb-2">Description: {item.description}</p>
-              <p className="text-lime-800 text-center mb-2">Current Price: ${item.currentprice.toFixed(2)}</p>
-              <p className="text-lime-800 text-center mb-2">Start Date: {new Date(item.startdate).toLocaleDateString()}</p>
-              <p className="text-lime-800 text-center mb-2">End Date: {new Date(item.enddate).toLocaleDateString()}</p>
-              <p className="text-lime-800 text-center mb-2">Status: {item.status}</p>
+              <p className="text-white text-center mb-2">Seller: {item.sellerid}</p>
+              <p className="text-white text-center mb-2">Category: {item.category}</p>
+              <p className="text-white text-center mb-2">Description: {item.description}</p>
+              <p className="text-white text-center mb-2">Current Price: ${item.currentprice.toFixed(2)}</p>
+              <p className="text-white text-center mb-2">Start Date: {new Date(item.startdate).toLocaleDateString()}</p>
+              <p className="text-white text-center mb-2">End Date: {new Date(item.enddate).toLocaleDateString()}</p>
+              <p className="text-white text-center mb-2">Status: {item.status}</p>
               <div className="flex justify-center items-center">
                 {isBidAllowed(item.startdate, item.enddate) ? (
-                  <button onClick={() => handleBidNow(item._id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <button onClick={() => handleBidNow(item._id)} className="bg-rose-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Bid Now
                   </button>
                 ) : (
