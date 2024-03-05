@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import backgroundImage from "../assets/co.jpg";
+import backgroundImage from "../assets/ing.png";
 
 
 const Contact = () => {
@@ -62,10 +62,10 @@ const Contact = () => {
     
     <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
       <div className="max-w-md mx-auto p-6 rounded-md shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
+        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-amber-400">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
           <div className="border p-4 mb-4 rounded">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-white text-sm font-bold mb-2">
               Name:
               <input
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -77,7 +77,7 @@ const Contact = () => {
             </label>
           </div>
           <div className="border p-4 mb-4 rounded">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-white text-sm font-bold mb-2">
               Phone Number:
               <input
                 type="tel"
@@ -89,7 +89,7 @@ const Contact = () => {
             </label>
           </div>
           <div className="border p-4 mb-4 rounded">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-white text-sm font-bold mb-2">
               Email:
               <input
                 type="email"
@@ -101,7 +101,7 @@ const Contact = () => {
             </label>
           </div>
           <div className="border p-4 mb-4 rounded">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-white text-sm font-bold mb-2">
               Interest:
               <input
                 type="text"
@@ -113,7 +113,7 @@ const Contact = () => {
             </label>
           </div>
           <div className="border p-4 mb-4 rounded">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-white text-sm font-bold mb-2">
               Message:
               <textarea
                 name="message"
@@ -126,7 +126,7 @@ const Contact = () => {
           <div className="mb-4">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block"
+              className="bg-red-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block"
             >
               Submit
             </button>

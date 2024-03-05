@@ -1,6 +1,7 @@
 // TimerPage.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import backgroundImage from "../assets/exx.png";
 
 const TimerPage = () => {
   const [timeRemainingList, setTimeRemainingList] = useState([]);
@@ -48,28 +49,31 @@ const TimerPage = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen flex items-center justify-center">
-      <div className="max-w-md mx-auto p-6 bg-emerald-950 rounded-md shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">Timer Page</h2>
-        {timeRemainingList.map((timeRemaining, index) => (
-          <div key={index} className="text-center mb-4">Item {index + 1}: {timeRemaining}</div>
-        ))}
-        {/* Conditional rendering for Contact button */}
-        <div className="text-center">
-          {bidEnded ? (
-            <Link to="/Contact">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Contact us
-              </button>
-            </Link>
-          ) : (
-            <button disabled className="bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-not-allowed">
-              Contact us
-            </button>
-          )}
-        </div>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+  <div className="max-w-md mx-auto p-6 bg-black rounded-md shadow-md text-white">
+    <h1 className="text-4xl font-semibold mb-6 mx-auto text-center">Auction Countdown</h1>
+    {timeRemainingList.map((timeRemaining, index) => (
+      <div key={index} className="text-center mb-4 text-lg">
+        Item {index + 1}: {timeRemaining}
       </div>
+    ))}
+    {/* Conditional rendering for Contact button */}
+    <div className="text-center">
+      {bidEnded ? (
+        <Link to="/Contact">
+          <button className="bg-rose-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+            Contact us
+          </button>
+        </Link>
+      ) : (
+        <button disabled className="bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-not-allowed opacity-50">
+          Contact us
+        </button>
+      )}
     </div>
+  </div>
+</div>
+
   );
 };
 

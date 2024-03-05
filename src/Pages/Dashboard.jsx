@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import backgroundImage from "../assets/dbb.jpg";
-
+import backgroundImage from "../assets/exx.png";
 
 const Dashboard = () => {
   const [items, setItems] = useState([]);
@@ -36,26 +35,25 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-      <div className="container mx-auto py-8 text-orange-950">
-    
+      <div className="container mx-auto py-8 text-amber-400">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {items.map(item => (
-            <div key={item._id} className="bg-gray-100 rounded-lg p-4">
+            <div key={item._id} className="bg-black rounded-lg p-4">
               {/* Render images */}
-              <div className="mb-4">
+              <div className="flex justify-center items-center">
                 {item.images.map((image, index) => (
-                  <img key={index} src={`data:${image.contentType};base64,${image.data}`} alt={`Image ${index}`} className="max-h-40 mb-2" />
+                  <img key={index} src={image.url} alt={`Image ${index}`} className="max-h-40 mb-2"/>
                 ))}
               </div>
-              <h2 className="text-xl font-semibold mb-2">{item.productid}</h2>
-              <p className="text-lime-800 mb-2">Seller: {item.sellerid}</p>
-              <p className="text-lime-800 mb-2">Category: {item.category}</p>
-              <p className="text-lime-800 mb-2">Description: {item.description}</p>
-              <p className="text-lime-800 mb-2">Current Price: ${item.currentprice.toFixed(2)}</p>
-              <p className="text-lime-800 mb-2">Start Date: {new Date(item.startdate).toLocaleDateString()}</p>
-              <p className="text-lime-800 mb-2">End Date: {new Date(item.enddate).toLocaleDateString()}</p>
-              <p className="text-lime-800 mb-2">Status: {item.status}</p>
-              <div className="mt-4">
+              <h2 className="text-xl text-center font-semibold mb-2">{item.productid}</h2>
+              <p className="text-lime-800 text-center mb-2">Seller: {item.sellerid}</p>
+              <p className="text-lime-800 text-center mb-2">Category: {item.category}</p>
+              <p className="text-lime-800 text-center mb-2">Description: {item.description}</p>
+              <p className="text-lime-800 text-center mb-2">Current Price: ${item.currentprice.toFixed(2)}</p>
+              <p className="text-lime-800 text-center mb-2">Start Date: {new Date(item.startdate).toLocaleDateString()}</p>
+              <p className="text-lime-800 text-center mb-2">End Date: {new Date(item.enddate).toLocaleDateString()}</p>
+              <p className="text-lime-800 text-center mb-2">Status: {item.status}</p>
+              <div className="flex justify-center items-center">
                 {isBidAllowed(item.startdate, item.enddate) ? (
                   <button onClick={() => handleBidNow(item._id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Bid Now

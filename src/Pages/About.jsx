@@ -2,7 +2,7 @@ import React from 'react';
 import v from "../assets/v.jpeg";
 import Aj from "../assets/Aj (2).jpeg";
 import a from "../assets/a.jpeg";
-import backgroundImage from "../assets/att.jpg";
+import backgroundImage from "../assets/ing.png";
 
 export default function About() {
   return (
@@ -10,7 +10,7 @@ export default function About() {
       {/* Title Section */}
       <div className="mb-8 text-center text-white">
         <h1 className="text-4xl font-bold mb-4">About</h1>
-        <p className="text-lg italic text-black">
+        <p className="text-lg italic text-amber-400">
           Welcome to our online auction system, where buyers and sellers come together to trade a wide range of items in a transparent and secure environment.
         </p>
       </div>
@@ -19,11 +19,11 @@ export default function About() {
       <div className="mb-8 text-white">
         <h2 className="text-3xl font-bold mb-4 text-center">Mission And Vision</h2>
         <p className="text-lg font-bold mb-2">Mission Statement:</p>
-        <p className="text-lg mb-4 italic text-black">
+        <p className="text-lg mb-4 italic text-amber-400">
           Our mission is to provide a user-friendly, efficient, and trustworthy platform for conducting online auctions.
         </p>
         <p className="text-lg font-bold mb-2">Vision Statement:</p>
-        <p className="text-lg italic text-black">
+        <p className="text-lg italic text-amber-400">
           We envision a future where individuals and businesses can easily buy and sell goods through our platform, fostering economic growth and opportunity.
         </p>
       </div>
@@ -31,7 +31,7 @@ export default function About() {
       {/* Platform Features */}
       <div className="mb-8 text-white">
         <h2 className="text-3xl font-bold mb-4 text-center">Platform Features</h2>
-        <ul className="list-disc list-inside text-lg text-black italic">
+        <ul className="list-disc list-inside text-lg text-amber-400 italic">
           <li className="mb-2">Secure bidding and payment processing</li>
           <li className="mb-2">Comprehensive item categorization</li>
           <li className="mb-2">Real-time auction tracking and notifications</li>
@@ -62,7 +62,7 @@ export default function About() {
       {/* Contact Information */}
       <div className="mb-12 text-white">
         <h2 className="text-3xl font-bold mb-4 text-center">Contact Information</h2>
-        <p className="text-lg text-center text-black italic">
+        <p className="text-lg text-center text-amber-400 italic">
           For any questions, feedback, or inquiries, feel free to reach out to us:
         </p>
         <div className="mt-4 space-y-8">
@@ -71,26 +71,26 @@ export default function About() {
             <p className="text-lg font-semibold mb-8">
               Vaishnavi Kumari:
               <br />
-              Email: <a href="mailto:aakritivaishu@gmail.com" className="text-black">aakritivaishu@gmail.com</a>
+              Email: <a href="mailto:aakritivaishu@gmail.com" className="text-amber-400">aakritivaishu@gmail.com</a>
               <br />
-              Instagram: <a href="https://www.instagram.com/vaishnavi.8297/" target="_blank" rel="noopener noreferrer" className="text-black">Vaishnavi Kumari</a>
+              Instagram: <a href="https://www.instagram.com/vaishnavi.8297/" target="_blank" rel="noopener noreferrer" className="text-amber-400">Vaishnavi Kumari</a>
             </p>
 
             {/* Team Member 2 */}
             <p className="text-lg font-semibold mb-8">
               Jyotirmayee Mekhala:
               <br />
-              Email: <a href="mailto:jyoti.sinha2609@gmail.com" className="text-black">jyoti.sinha2609@gmail.com</a>
+              Email: <a href="mailto:jyoti.sinha2609@gmail.com" className="text-amber-400">jyoti.sinha2609@gmail.com</a>
               <br />
-              Instagram: <a href="https://www.instagram.com/jyotii._01/" target="_blank" rel="noopener noreferrer" className="text-black">Jyotirmayee Mekhala</a>
+              Instagram: <a href="https://www.instagram.com/jyotii._01/" target="_blank" rel="noopener noreferrer" className="text-amber-400">Jyotirmayee Mekhala</a>
             </p>
 
             <p className="text-lg font-semibold mb-8">
               Anshu Kumari:
               <br />
-              Email: <a href="mailto:akumari.dbg@gmail.com" className="text-black">akumari.dbg@gmail.com</a>
+              Email: <a href="mailto:akumari.dbg@gmail.com" className="text-amber-400">akumari.dbg@gmail.com</a>
               <br />
-              Instagram: <a href="https://www.instagram.com/_anshuu_mishra/" target="_blank" rel="noopener noreferrer" className="text-black">Anshu Kumari</a>
+              Instagram: <a href="https://www.instagram.com/_anshuu_mishra/" target="_blank" rel="noopener noreferrer" className="text-amber-400">Anshu Kumari</a>
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import backgroundImage from "../assets/contact.jpg";
+import backgroundImage from "../assets/ing.png";
 
 const SellItem = () => {
     const [formData, setFormData] = useState({
@@ -38,9 +38,9 @@ const SellItem = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-        <div className="max-w-md mx-auto p-6 bg-gradient-to-br from-purple-400 to-pink-500 rounded-md shadow-md">
-            <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-white">Sell your products with us!</h2>
+        <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
+        <div className="max-w-md mx-auto p-6 rounded-md shadow-md">
+            <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-amber-400">Sell your products with us!</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block mb-1 text-white">Product ID:</label>
@@ -132,7 +132,7 @@ const SellItem = () => {
                         <option value="inactive">Inactive</option>
                     </select>
                 </div>
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mx-auto block">Submit</button>
+                <button type="submit" className="bg-red-700 text-white px-4 py-2 rounded-md hover:bg-blue-600 mx-auto block">Submit</button>
             </form>
         </div>
         </div>
