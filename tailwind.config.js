@@ -7,9 +7,10 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                display: ["lemon", "swap "]
-            }
+
+                display: ["lemon", "swap", "my-soul", "My Soul"]
+            },
         },
     },
     plugins: [],
-}
+};

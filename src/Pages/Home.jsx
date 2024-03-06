@@ -1,5 +1,7 @@
 import React from 'react'
 import Slider from '../Components/Slider'
+import backgroundImage from "../assets/exxxx.png";
+
 
 import { Link } from 'react-router-dom';
 
@@ -12,7 +14,7 @@ export default function Home
 
         </Slider>
         </div>
-        <div  className='bg-gray-500 w-full flex justify-center mt-10 h-48 items-center flex-col'>
+        <div  className='bg-gray-500 w-full flex justify-center mt-10 h-48 items-center flex-col'  style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat' }}>
             <p className='text-white font-display'>
                 Exciting Bids, Big Wins!
                 

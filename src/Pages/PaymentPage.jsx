@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import backgroundImage from "../assets/exx.png";
+
+
 
 const PaymentPage = () => {
   // State to manage form inputs
@@ -36,8 +39,9 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white">
-      <h1 className="text-2xl font-bold mb-4">Payment Page</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+    <div className="container mx-auto px-4 py-8 bg-black justify-center flex items-center to-red-500 text-white">
+      {/* <h1 className="text-2xl font-bold mb-4">Payment Page</h1> */}
       <form onSubmit={handleSubmit} className="max-w-md">
         <div className="mb-4">
           <label className="block mb-1 text-white">Card Number:</label>
@@ -106,11 +110,14 @@ const PaymentPage = () => {
           />
         </div>
         <Link to="/ThankYou">
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        <div className="flex items-center justify-center">
+          <button type="submit" className="bg-rose-700 text-white px-4 py-2 rounded-md hover:bg-blue-600">
             Pay Now
           </button>
+          </div>
         </Link>
       </form>
+    </div>
     </div>
   );
 };

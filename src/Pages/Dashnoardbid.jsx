@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import clothes from '../assets/clothes.jpeg';
+import backgroundImage from "../assets/exx.png";
+
 
 const DashboardBid = () => {
   const [secondsLeft, setSecondsLeft] = useState(600); // Initial value for 10 minutes
@@ -99,73 +101,67 @@ const DashboardBid = () => {
   }, [auctionEnded]);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-200">
-      {/* Main Header */}
-      <header className="bg-blue-500 p-4 text-white">
-        <h1 className="text-2xl font-semibold">Auction App</h1>
-      </header>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+  {/* Main Content */}
+  <div className="flex-grow p-8  text-center">
+    {/* <h2 className="text-4xl font-semibold mb-6 text-white">Current Auction</h2> */}
 
-      {/* Main Content */}
-      <div className="flex-grow p-8">
-        <h2 className="text-3xl font-semibold mb-4">Current Auction</h2>
+    {/* Auction Heading and Image */}
+    <div className="bg-black p-8 rounded shadow-md">
+      {/* Auction Image */}
+      <img src={clothes} alt="Auction Item" className="max-h-[50vh] rounded-md mx-auto mb-6" />
 
-        {/* Auction Heading and Image */}
-        <div className="bg-white p-8 rounded shadow-md bg-teal-100"> {/* Added bg-teal-100 class */}
-          <h3 className="text-2xl font-semibold mb-4">Auction Item Name</h3>
+      {/* Auction Details */}
+      <p className="text-amber-400 mb-4 text-lg">
+        Description: This dress, a true sartorial masterpiece, is not merely an outfit but a statement of grace and sophistication. Wear it to command attention at any elegant affair, where you'll undoubtedly leave an indelible impression of royal allure and timeless style.
+      </p>
+      <p className="text-white mb-4 text-lg">Starting Bid: {highestBid}</p>
+      <p className="text-white mb-4 text-lg">Ending Bid: 1000</p>
 
-          {/* Auction Image */}
-          <img src={clothes} alt="Auction Item" className="max-h-[20vh] rounded-m" />
+      {/* Timer */}
+      <p className="text-white mb-4 text-lg">Time Left: {formatTime(secondsLeft)}</p>
 
-          {/* Auction Details */}
-          <p className="text-gray-700 mb-2">
-            Description: “A gentleman’s choice of timepiece says as much about him as does his Saville Row suit.
-          </p>
-          <p className="text-gray-700 mb-2">Starting Bid: {highestBid}</p>
-          <p className="text-gray-700 mb-2">Ending Bid: 1000</p>
-          {/* Timer */}
-          <p className="text-gray-700 mb-2">Time Left: {formatTime(secondsLeft)}</p>
+      {/* Bid Form */}
+      {!auctionEnded && (
+        <form className="flex flex-col max-w-md mx-auto" onSubmit={handleSubmit}>
+          <label className="text-lg text-amber-400 mb-2" htmlFor="bidAmount">
+            Your Bid:
+          </label>
+          <input
+            type="number"
+            id="bidAmount"
+            name="bidAmount"
+            className="border rounded py-2 px-3 mb-4"
+            placeholder="Enter your bid amount"
+            value={bidAmount}
+            onChange={(e) => {
+              const value = parseInt(e.target.value);
+              if (!isNaN(value)) {
+                setBidAmount(value);
+              } else {
+                setBidAmount(0); // or any default value you prefer
+              }
+            }}
+          />
 
-          {/* Bid Form */}
-          {!auctionEnded && (
-            <form className="flex flex-col max-w-sm" onSubmit={handleSubmit}>
-              <label className="text-sm text-gray-600 mb-1" htmlFor="bidAmount">
-                Your Bid:
-              </label>
-              <input
-                type="number"
-                id="bidAmount"
-                name="bidAmount"
-                className="border rounded py-2 px-3 mb-2"
-                placeholder="Enter your bid amount"
-                value={bidAmount}
-                onChange={(e) => {
-                  const value = parseInt(e.target.value);
-                  if (!isNaN(value)) {
-                    setBidAmount(value);
-                  } else {
-                    setBidAmount(0); // or any default value you prefer
-                  }
-                }}
-              />
+          {/* Submit Bid Button */}
+          <button
+            type="submit"
+            className="bg-rose-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+          >
+            Submit Bid
+          </button>
+        </form>
+      )}
 
-              {/* Submit Bid Button */}
-              <button
-                type="submit"
-                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-              >
-                Submit Bid
-              </button>
-            </form>
-          )}
-
-          {/* Winner Message */}
-          {auctionEnded && winner && (
-            <p className="text-green-500 mt-4">Auction ended. Winner: {winner}</p>
-          )}
-        </div>
-      </div>
+      {/* Winner Message */}
+      {auctionEnded && winner && (
+        <p className="text-green-500 mt-6">Auction ended. Winner: {winner}</p>
+      )}
     </div>
-  );
-};
+  </div>
+  </div>
 
-export default DashboardBid;
+  );
+      };
+  export default DashboardBid;

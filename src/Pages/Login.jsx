@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import backgroundImage from "../assets/exx.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,8 +46,9 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 p-4 bg-green-200 rounded shadow-md max-w-md">
-      <h1 className="text-3xl font-bold mb-4 text-center">Login</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+    <div className="container mx-auto mt-8 p-4 bg-black rounded shadow-md max-w-md">
+      <h1 className="text-3xl font-bold mb-4 text-center text-amber-400">Login</h1>
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-4 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -79,23 +81,26 @@ const Login = () => {
         </div>
 
         <Link to="/Dashboardbid">
+        <div className="flex items-center justify-center">
           <button
             type="submit"
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
           >
             Login
           </button>
+          </div>
         </Link>
       </form>
 
       <div className="text-center">
-        <p className="text-gray-700">
+        <p className="text-white">
           Don't have an account?{' '}
           <Link to="/register" className="text-blue-500 hover:underline">
             Register here
           </Link>
         </p>
       </div>
+    </div>
     </div>
   );
 };
