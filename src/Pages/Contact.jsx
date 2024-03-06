@@ -58,8 +58,8 @@ const Contact = () => {
 
   return (
     
-    <div className="bg-gray-200 min-h-screen flex items-center justify-center">
-      <div className="max-w-md mx-auto p-6 bg-emerald-950 rounded-md shadow-md">
+    <div className="bg-teal-800 min-h-screen flex items-center justify-center">
+      <div className="max-w-md mx-auto p-6 bg-teal-100 rounded-md shadow-md">
         <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
           <div className="border p-4 mb-4 rounded">

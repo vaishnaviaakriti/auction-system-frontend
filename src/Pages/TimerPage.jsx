@@ -49,7 +49,7 @@ const TimerPage = () => {
 
   return (
     <div className="bg-gray-200 min-h-screen flex items-center justify-center">
-      <div className="max-w-md mx-auto p-6 bg-emerald-950 rounded-md shadow-md">
+      <div className="max-w-md mx-auto p-6 bg-teal-100 rounded-md shadow-md">
         <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">Timer Page</h2>
         {timeRemainingList.map((timeRemaining, index) => (
           <div key={index} className="text-center mb-4">Item {index + 1}: {timeRemaining}</div>
