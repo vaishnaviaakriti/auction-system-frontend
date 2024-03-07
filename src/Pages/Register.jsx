@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import backgroundImage from "../assets/exx.png";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -24,11 +25,12 @@ const Register = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 p-4 bg-green-200 rounded shadow-md">
-      <h1 className="text-3xl font-bold mb-4 text-center">Register</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+    <div className="container mx-auto mt-8 p-4 bg-black rounded shadow-md">
+      <h1 className="text-3xl font-bold mb-4 text-center text-amber-400">Register</h1>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="name">
             Name
           </label>
           <input
@@ -43,7 +45,7 @@ const Register = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="phone">
             Phone
           </label>
           <input
@@ -58,7 +60,7 @@ const Register = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
             Email
           </label>
           <input
@@ -73,7 +75,7 @@ const Register = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="password">
             Password
           </label>
           <input
@@ -87,15 +89,18 @@ const Register = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
-        >
-          Register
-        </button>
+        <div className="flex items-center justify-center">
+  <button
+    type="submit"
+    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
+  >
+    Register
+  </button>
+</div>
+
       </form>
 
-      <div className="mt-4 text-center">
+      <div className="mt-4 text-center text-white">
         <p>Already have an account?</p>
         <Link to="/login">
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
@@ -103,6 +108,7 @@ const Register = () => {
           </button>
         </Link>
       </div>
+    </div>
     </div>
   );
 };
