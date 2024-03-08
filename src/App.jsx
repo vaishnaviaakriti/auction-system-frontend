@@ -14,6 +14,8 @@ import SellItem from "./Pages/SellItem"
 import ThankYou from "./Pages/ThankYou"
 import PaymentPage from "./Pages/PaymentPage"
 import TimerPage from "./Pages/TimerPage"
+import Profile from "./Pages/Profile"
+import AdminLogin from "./Pages/AdminLogin"
 import { Route, Routes } from "react-router-dom"
 import { analytics } from "../src/Helper"
 import { logEvent } from "firebase/analytics"
@@ -43,6 +45,8 @@ if (analytics){
 <Route path="/ThankYou"element={<ThankYou/>}/>
 <Route path="/PaymentPage"element={<PaymentPage/>}/>
 <Route path="/TimerPage"element={<TimerPage/>}/>
+<Route path="/Profile"element={<Profile/>}/>
+<Route path="/AdminLogin"element={<AdminLogin/>}/>
 <Route path="/Dynamic/:id"element={<Dynamic/>}/>
       </Routes>
 

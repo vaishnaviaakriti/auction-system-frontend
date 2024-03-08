@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import backgroundImage from "../assets/ing.png";
-
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -37,38 +35,25 @@ const Contact = () => {
         const responseData = await response.json();
 
         if (responseData.message) {
-          // Display a success message or handle accordingly
           console.log(responseData.message);
           navigate(`/CongratulationPage?name=${formData.name}`);
         }
 
         if (responseData.formDetails) {
-          // Display the retrieved details on the frontend
           console.log(responseData.formDetails);
-          // For example, you might want to navigate to a new page with the details
-          
         }
       } else {
-        // Handle form submission failure
         console.error('Form submission failed.');
       }
     } catch (error) {
-      // Handle fetch error
       console.error('Error during form submission:', error);
     }
   };
 
   return (
-    
-<<<<<<< HEAD
-    <div className="bg-teal-800 min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
       <div className="max-w-md mx-auto p-6 bg-teal-100 rounded-md shadow-md">
         <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
-=======
-    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-      <div className="max-w-md mx-auto p-6 rounded-md shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-amber-400">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
->>>>>>> 6c537690b26ad7523179ad12cdbc8b6fd3ebe474
         <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
           <div className="border p-4 mb-4 rounded">
             <label className="block text-white text-sm font-bold mb-2">

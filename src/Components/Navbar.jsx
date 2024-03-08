@@ -25,7 +25,8 @@ export default function Navbar() {
         </Link>
         <Link to="/Sellitem" className="text-white hover:text-red-900">
           Sell
-        </Link>
+         </Link>
+        <Link to="/AdminLogin"className='text-white hover:text-red-900'>Admin Login</Link>
       </div>
     </nav>
   );
