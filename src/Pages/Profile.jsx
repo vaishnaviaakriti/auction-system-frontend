@@ -5,6 +5,7 @@ const Profile = () => {
   const [userData, setUserData] = useState([]);
   const [formsData, setFormsData] = useState([]);
   const [bidsData, setBidsData] = useState([]);
+  const [itemsData, setItemsData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -33,6 +34,14 @@ const Profile = () => {
         }
         const bidData = await bidsResponse.json();
         setBidsData(bidData);
+
+        // Fetch items data
+        const itemsResponse = await fetch('http://localhost:3000/getitem');
+        if (!itemsResponse.ok) {
+          throw new Error('Failed to fetch item data');
+        }
+        const itemData = await itemsResponse.json();
+        setItemsData(itemData);
       } catch (error) {
         console.error('Error fetching data:', error);
         setError(error.message);
@@ -77,6 +86,7 @@ const Profile = () => {
     <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="container mx-auto p-8 bg-black bg-opacity-50 rounded-lg shadow-xl">
         <h1 className="text-3xl font-bold mb-8 text-center text-amber-400">User Profile</h1>
+        {/* User Details */}
         <div className="grid grid-cols-1 gap-8">
           {userData.map(user => (
             <div key={user._id} className="bg-gray-900 bg-opacity-75 p-6 rounded-lg shadow-md">
@@ -95,6 +105,7 @@ const Profile = () => {
             </div>
           ))}
         </div>
+        {/* Forms */}
         <div className="mt-8">
           <h2 className="text-xl font-bold mb-4 text-center text-white">Forms</h2>
           <div className="text-white mb-4">
@@ -109,6 +120,7 @@ const Profile = () => {
             ))}
           </div>
         </div>
+        {/* Bids */}
         <div className="mt-8">
           <h2 className="text-xl font-bold mb-4 text-center text-white">Bids</h2>
           <div className="text-white mb-4">
@@ -116,6 +128,24 @@ const Profile = () => {
               <div key={index}>
                 <p><strong>Bid Amount:</strong> {bid.bidAmount}</p>
                 <p><strong>Bid Description:</strong> {bid.bidDescription}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Items */}
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-4 text-center text-white">Items</h2>
+          <div className="text-white mb-4">
+            {itemsData.map((item, index) => (
+              <div key={index}>
+                <p><strong>Product ID:</strong> {item.productid}</p>
+                <p><strong>Seller ID:</strong> {item.sellerid}</p>
+                <p><strong>Category:</strong> {item.category}</p>
+                <p><strong>Description:</strong> {item.description}</p>
+                <p><strong>Current Price:</strong> {item.currentprice}</p>
+                <p><strong>Start Date:</strong> {item.startdate}</p>
+                <p><strong>End Date:</strong> {item.enddate}</p>
+                <p><strong>Status:</strong> {item.status}</p>
               </div>
             ))}
           </div>
