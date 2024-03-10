@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import backgroundImage from "../assets/exx.png";
 
 const Profile = () => {
@@ -149,6 +150,14 @@ const Profile = () => {
               </div>
             ))}
           </div>
+        </div>
+        {/* Sell Item Button */}
+        <div className="mt-8">
+          <Link to="/sellitem">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Sell Item
+            </button>
+          </Link>
         </div>
       </div>
     </div>
