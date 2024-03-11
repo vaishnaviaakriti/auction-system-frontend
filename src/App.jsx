@@ -16,6 +16,7 @@ import PaymentPage from "./Pages/PaymentPage"
 import TimerPage from "./Pages/TimerPage"
 import Profile from "./Pages/Profile"
 import AdminLogin from "./Pages/AdminLogin"
+import CustomerManagement from "./Pages/CustomerManagement"
 import { Route, Routes } from "react-router-dom"
 import { analytics } from "../src/Helper"
 import { logEvent } from "firebase/analytics"
@@ -47,6 +48,7 @@ if (analytics){
 <Route path="/TimerPage"element={<TimerPage/>}/>
 <Route path="/Profile"element={<Profile/>}/>
 <Route path="/AdminLogin"element={<AdminLogin/>}/>
+<Route path="/CustomerManagement"element={<CustomerManagement/>}/>
 <Route path="/Dynamic/:id"element={<Dynamic/>}/>
       </Routes>
 

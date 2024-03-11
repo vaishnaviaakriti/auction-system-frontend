@@ -23,8 +23,8 @@ export default function Navbar() {
         <Link to="/Contact" className="text-white hover:text-red-900">
           Contact
         </Link>
-        <Link to="/Sellitem" className="text-white hover:text-red-900">
-          Sell
+        <Link to="/CustomerManagement" className="text-white hover:text-red-900">
+          Customer Sell
          </Link>
         <Link to="/AdminLogin"className='text-white hover:text-red-900'>Admin Login</Link>
       </div>
