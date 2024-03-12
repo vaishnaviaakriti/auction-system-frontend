@@ -52,8 +52,8 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-      <div className="max-w-md mx-auto p-6 bg-teal-100 rounded-md shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
+      <div className="max-w-md mx-auto p-6 rounded-md shadow-md">
+        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-amber-400">We are willing to hear from you! Please feel free to contact us and share your experience, we will get back to you as soon as possible!</h2>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
           <div className="border p-4 mb-4 rounded">
             <label className="block text-white text-sm font-bold mb-2">
@@ -117,7 +117,7 @@ const Contact = () => {
           <div className="mb-4">
             <button
               type="submit"
-              className="bg-red-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block"
+              className="bg-rose-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block"
             >
               Submit
             </button>
