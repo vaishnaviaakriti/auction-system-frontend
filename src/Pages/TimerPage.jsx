@@ -1,6 +1,7 @@
 // TimerPage.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import backgroundImage from "../assets/exx.png";
 
 const TimerPage = () => {
   const [timeRemainingList, setTimeRemainingList] = useState([]);
@@ -48,23 +49,24 @@ const TimerPage = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen flex items-center justify-center">
-      <div className="max-w-md mx-auto p-6 bg-teal-100 rounded-md shadow-md">
-        <h2 className="text-2xl font-semibold mb-4 mx-auto text-center italic text-red-900">Timer Page</h2>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+      <div className="max-w-md mx-auto p-6 bg-black rounded-md shadow-md">
+        <h2 className="text-3xl font-bold mb-4 text-center text-amber-400">Auction Countdown</h2>
         {timeRemainingList.map((timeRemaining, index) => (
-          <div key={index} className="text-center mb-4">Item {index + 1}: {timeRemaining}</div>
+          <div key={index} className="text-center mb-4 text-xl text-white font-semibold">
+            Item {index + 1}: {timeRemaining}
+          </div>
         ))}
-        {/* Conditional rendering for Contact button */}
-        <div className="text-center">
+        <div className="text-center mt-8">
           {bidEnded ? (
             <Link to="/Contact">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Contact us
+              <button className="bg-rose-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Contact Us
               </button>
             </Link>
           ) : (
-            <button disabled className="bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-not-allowed">
-              Contact us
+            <button disabled className="bg-rose-950 text-white font-bold py-2 px-4 rounded cursor-not-allowed">
+              Contact Us
             </button>
           )}
         </div>
